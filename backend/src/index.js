@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "https://bloodbond-blood-donation-webapp-using-vlhk.onrender.com/", // "http://localhost:5173",
+    origin: "https://bloodbond-blood-donation-webapp-using-2n4y.onrender.com", // "http://localhost:5173",
     credentials: true,
   })
 );
