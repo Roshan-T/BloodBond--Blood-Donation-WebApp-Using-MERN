@@ -1,7 +1,7 @@
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const registerUser = async (userformData) => {
-  const response = await fetch(`http:localhost:7000/api/v1/users/signup`, {
+  const response = await fetch(`${API_BASE_URL}users/signup`, {
     method: "POST",
     credentials: "include",
     body: userformData,
