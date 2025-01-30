@@ -1,5 +1,5 @@
 import { Heart, Facebook, Twitter, Instagram } from "lucide-react";
-
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="bg-primary py-6 flex flex-col px-6 text-white ">
@@ -11,7 +11,7 @@ const Footer = () => {
           </span>
         </div>
         <div className="bg-white text-lg font-bold text-primary p-1 rounded-xl tracking-wider">
-          +977-9898989898
+          +977-9827114984
         </div>
       </div>
       <div className="grid mt-3 grid-cols-1 md:grid-cols-3 md:space-x-3 space-y-3">
@@ -26,19 +26,25 @@ const Footer = () => {
         <div className="flex flex-col space-y-2">
           <p className="text-xl font-bold">Quick Links</p>
 
-          <p className="text-red-100 tracking-tighter text-lg">Find Donors</p>
-          <p className="text-red-100 tracking-tighter text-lg">
-            Donation Campaigns
-          </p>
-          <p className="text-red-100 tracking-tighter text-lg">
-            Emergency Request
-          </p>
+          <Link to={"/donor"}>
+            <p className="text-red-100 tracking-tighter text-lg">Find Donors</p>
+          </Link>
+          <Link to={"/"}>
+            <p className="text-red-100 tracking-tighter text-lg">
+              Donation Campaigns
+            </p>
+          </Link>
+          <Link to={"/"}>
+            <p className="text-red-100 tracking-tighter text-lg">
+              Emergency Request
+            </p>
+          </Link>
         </div>
         <div className="flex flex-col space-y-2">
           <p className="text-xl font-bold">Contact Us</p>
 
           <p className="text-red-100 tracking-tighter text-lg">
-            abc BloodBond ,Pokhara
+            BloodBond ,Pokhara
           </p>
           <p className="text-red-100 tracking-tighter text-lg">
             contact@bloodbond.com

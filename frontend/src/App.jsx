@@ -22,6 +22,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import HistoryDonor from "./Pages/Donor/HistoryDonor";
 import Logout from "./components/Logout";
 import ProfileHospital from "./Pages/Hospital/ProfileHospital";
+import NotFound from "./Pages/NotFound";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -36,14 +37,17 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           {!isLoggedIn ? (
-            <Route
-              path="/"
-              element={
-                <AppLayout>
-                  <Landing />
-                </AppLayout>
-              }
-            ></Route>
+            <>
+              <Route
+                path="/"
+                element={
+                  <AppLayout>
+                    <Landing />
+                  </AppLayout>
+                }
+              ></Route>
+              <Route path="/donor" element={<Login />}></Route>
+            </>
           ) : user?.role === "Donor" ? (
             <>
               <Route
@@ -201,6 +205,7 @@ const App = () => {
           )}
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<SignUp />}></Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>

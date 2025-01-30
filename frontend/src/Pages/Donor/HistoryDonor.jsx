@@ -79,6 +79,7 @@ const HistoryDonor = () => {
       retry: false,
     }
   );
+  const isLoading = isRLoading || isCLoading;
   const [selectedTab, setSelectedTab] = useState("request");
   return (
     <div className="p-2">
@@ -114,10 +115,10 @@ const HistoryDonor = () => {
       <div>
         {selectedTab === "request" ? (
           <div className="space-y-4">
-            {isRLoading ? (
+            {isLoading ? (
               <LoaderSpinner></LoaderSpinner>
             ) : requestDatas?.length > 0 ? (
-              requestDatas?.requests.map((request, index) => (
+              requestDatas.requests.map((request, index) => (
                 <HistoryBoxEmergencyRequest
                   key={index}
                   index={index}
@@ -130,10 +131,10 @@ const HistoryDonor = () => {
           </div>
         ) : (
           <div className="space-y-4">
-            {isCLoading ? (
+            {isLoading ? (
               <LoaderSpinner></LoaderSpinner>
             ) : campaignDatas?.length > 0 ? (
-              campaignDatas.campaigns.map((campgain, index) => (
+              campaignDatas?.campaigns?.map((campgain, index) => (
                 <CampaignHistory
                   key={index}
                   index={index}
