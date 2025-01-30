@@ -19,19 +19,27 @@ async function connectDB() {
 
 connectDB();
 const app = express();
-app.use(cookieParser());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://bloodbond-blood-donation-webapp-using-2n4y.onrender.com",
+];
+
 app.use(
   cors({
-    origin: "https://bloodbond-blood-donation-webapp-using-2n4y.onrender.com", // "http://localhost:5173",
+    origin: function (origin, callback) {
+      console.log("Request Origin:", origin); // Debugging
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, origin); // Set the specific origin
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
-// // {
-//   origin: "http://localhost:5173",
-//   credentials: true,
-// }
+app.use(cookieParser());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/rewards", rewardRoutes);
